@@ -66,4 +66,4 @@ assets = [
 ]
 conf-files = ["/etc/openwec.conf.toml"]
 maintainer-scripts = "debian/"
-systemd-units = { enable = false }
+systemd-units = { unit-name = "openwecd", enable = false }
