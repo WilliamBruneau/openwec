@@ -1,0 +1,28 @@
+name: Build debian package
+
+on:
+  push:
+    tags:
+      - "v*"
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install dependencies
+      run: |
+        rustup update
+        cargo install cargo-deb
+    - name: Make package
+      run: cargo deb
+    - name: Upload package
+      uses: actions/upload-artifact@v3
+      with:
+        name: openwec-deb-package
+        path: ./target/debian/*.deb
