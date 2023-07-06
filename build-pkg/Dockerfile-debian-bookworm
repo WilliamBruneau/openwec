@@ -6,7 +6,6 @@ RUN set -eux; \
     pkgconf \
     clang \
     make \
-    rename \
     libssl-dev \
     libkrb5-dev && \
     cargo install cargo-deb
