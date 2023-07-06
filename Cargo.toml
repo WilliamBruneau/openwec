@@ -6,14 +6,6 @@ members = [
     "cli"
 ]
 
-[package]
-name = "openwec"
-version = "0.1.0"
-edition = "2021"
-license = "GPL-3.0"
-description = "openwec server"
-authors = ["Vincent Ruello <vincent.ruello@cea.fr>"]
-
 [package.metadata.deb]
 maintainer = "William Bruneau <william.bruneau@cea.fr>"
 copyright = "2023, CEA <william.bruneau@cea.fr>"
