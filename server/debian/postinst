@@ -8,7 +8,7 @@ OPENWEC_SHELL="/sbin/nologin"
 
 create_user() {
     if id ${OPENWEC_USER} > /dev/null 2>&1; then return; fi
-    /usr/sbin/adduser --system --home "${OPENWEC_HOME}" --shell "${OPENWEC_SHELL}" --group ${OPENWEC_HOME}
+    /usr/sbin/adduser --system --home "${OPENWEC_HOME}" --shell "${OPENWEC_SHELL}" --group ${OPENWEC_USER}
 }
 
 case "$1" in
