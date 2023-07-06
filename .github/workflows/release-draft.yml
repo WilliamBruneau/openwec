@@ -20,7 +20,8 @@ jobs:
           docker build -t openwec-builder:debian-bookworm -f Dockerfile-debian-bookworm . && \
           docker run -t -u $(id -u):$(id -g) -v $(pwd)/../:/SRC  \
             --env CARGO_HOME=/SRC/target/.cargo openwec-builder:debian-bookworm \
-            cargo deb --manifest-path=./server/Cargo.toml
+            cargo deb --manifest-path=./server/Cargo.toml && \
+          rename .deb _deb12.deb ./target/debian/*.deb
     - name: Upload debian bookworm package
       uses: actions/upload-artifact@v3
       with:
@@ -33,7 +34,8 @@ jobs:
           docker build -t openwec-builder:debian-bullseye -f Dockerfile-debian-bullseye . && \
           docker run -t -u $(id -u):$(id -g) -v $(pwd)/../:/SRC  \
             --env CARGO_HOME=/SRC/target/.cargo openwec-builder:debian-bullseye \
-            cargo deb --manifest-path=./server/Cargo.toml
+            cargo deb --manifest-path=./server/Cargo.toml && \
+          rename .deb _deb11.deb ./target/debian/*.deb
     - name: Upload debian bullseye package
       uses: actions/upload-artifact@v3
       with:
@@ -49,17 +51,15 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: openwec-deb-bookworm-package
-          path: debian-bookworm/
       - name: Download debian bullseye package
         uses: actions/download-artifact@v3
         with:
           name: openwec-deb-bullseye-package
-          path: debian-bullseye/
       - name: Get artifacts names
         id: artifacts_names
         run: |
-          echo "U_PKG_DEB_BOOKWORM=$(ls debian-bookworm/openwec*.deb)" >> "$GITHUB_OUTPUT" && \
-          echo "U_PKG_DEB_BULLSEYE=$(ls debian-bullseye/openwec*.deb)" >> "$GITHUB_OUTPUT"
+          echo "U_PKG_DEB_BOOKWORM=$(ls openwec*_deb12.deb)" >> "$GITHUB_OUTPUT" && \
+          echo "U_PKG_DEB_BULLSEYE=$(ls openwec*_deb11.deb)" >> "$GITHUB_OUTPUT"
       - name: Create draft release
         uses: softprops/action-gh-release@v1
         with:
