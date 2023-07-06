@@ -28,7 +28,7 @@ jobs:
         path: ./target/debian/*.deb
     - name: Make debian bullseye package
       run: |
-          rm target/debian/* && \
+          cargo clean && \
           cd build-pkg && \
           docker build -t openwec-builder:debian-bullseye -f Dockerfile-debian-bullseye . && \
           docker run -t -u $(id -u):$(id -g) -v $(pwd)/../:/SRC  \
@@ -39,6 +39,7 @@ jobs:
       with:
         name: openwec-deb-bullseye-package
         path: ./target/debian/*.deb
+  # Need to select "Read and write permissions" under Actions / General / Workflow Permissions
   release:
     name: Github release draft
     needs: [build]
