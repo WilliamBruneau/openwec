@@ -20,7 +20,7 @@ jobs:
         rustup update
         cargo install cargo-deb
     - name: Make package
-      run: cargo deb
+      run: cargo deb --manifest-path=server/Cargo.toml
     - name: Upload package
       uses: actions/upload-artifact@v3
       with:
