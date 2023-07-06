@@ -15,12 +15,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Install dependencies
-      run: |
-        rustup update
-        cargo install cargo-deb
-        sudo apt-get update && \
-        sudo apt-get install -y --no-install-recommends \
     - name: Make debian package
       run:
           cd debian && \
