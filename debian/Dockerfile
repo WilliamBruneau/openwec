@@ -1,4 +1,5 @@
-FROM rust:slim-bookworm
+#FROM rust:slim-bookworm
+FROM rust:slim-bullseye
 
 RUN set -eux; \
     apt-get update && \
