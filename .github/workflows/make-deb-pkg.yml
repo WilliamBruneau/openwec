@@ -21,10 +21,13 @@ jobs:
         cargo install cargo-deb
         sudo apt-get update && \
         sudo apt-get install -y --no-install-recommends \
-        libkrb5-dev \
-        libssl-dev
-    - name: Make package
-      run: cargo deb --manifest-path=server/Cargo.toml
+    - name: Make debian package
+      run:
+          cd debian && \
+          docker build -t openwec-builder:debian -f Dockerfile . && \
+          docker run -t -u $(id -u):$(id -g) -v $(pwd)/../:/SRC  \
+            --env CARGO_HOME=/SRC/target/.cargo openwec-builder:debian \
+            cargo deb --manifest-path=../server/Cargo.toml
     - name: Upload package
       uses: actions/upload-artifact@v3
       with:

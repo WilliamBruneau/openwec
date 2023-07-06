@@ -1,0 +1,10 @@
+FROM rust:slim-bookworm
+
+RUN set -eux; \
+    apt-get update && \
+    apt-get install -y --no-install-recommends \
+    libssl-dev \
+    libkrb5-dev && \
+    cargo install cargo-deb
+
+WORKDIR /SRC
