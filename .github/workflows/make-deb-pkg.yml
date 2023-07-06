@@ -19,6 +19,10 @@ jobs:
       run: |
         rustup update
         cargo install cargo-deb
+        sudo apt-get update && \
+        sudo apt-get install -y --no-install-recommends \
+        libkrb5-dev \
+        libssl-dev
     - name: Make package
       run: cargo deb --manifest-path=server/Cargo.toml
     - name: Upload package
