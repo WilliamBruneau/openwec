@@ -4,6 +4,7 @@ RUN set -eux; \
     apt-get update && \
     apt-get install -y --no-install-recommends \
     pkgconf \
+    clang \
     libssl-dev \
     libkrb5-dev && \
     cargo install cargo-deb
