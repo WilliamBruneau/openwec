@@ -46,12 +46,12 @@ jobs:
       - name: Download debian bookworm package
         uses: actions/download-artifact@v3
         with:
-          name: usbsas-deb-bookworm-package
+          name: openwec-deb-bookworm-package
           path: debian-bookworm/
       - name: Download debian bullseye package
         uses: actions/download-artifact@v3
         with:
-          name: usbsas-deb-bullseye-package
+          name: openwec-deb-bullseye-package
           path: debian-bullseye/
       - name: Get artifacts names
         id: artifacts_names
