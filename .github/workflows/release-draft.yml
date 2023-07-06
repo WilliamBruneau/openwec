@@ -57,7 +57,7 @@ jobs:
         id: artifacts_names
         run: |
           echo "U_PKG_DEB_BOOKWORM=$(ls debian-bookworm/openwec*.deb)" >> "$GITHUB_OUTPUT" && \
-          echo "U_PKG_DEB_BULLSEYE=$(ls debian-bullseye/openwec*.deb)" >> "$GITHUB_OUTPUT" && \
+          echo "U_PKG_DEB_BULLSEYE=$(ls debian-bullseye/openwec*.deb)" >> "$GITHUB_OUTPUT"
       - name: Create draft release
         uses: softprops/action-gh-release@v1
         with:
