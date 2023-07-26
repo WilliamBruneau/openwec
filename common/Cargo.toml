@@ -2,6 +2,8 @@
 name = "common"
 version = "0.1.0"
 edition = "2021"
+# Used by cargo-deb
+homepage = "https://github.com/cea-sec/openwec"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -35,7 +37,6 @@ copyright = "2023, CEA"
 extended-description = """\
 An implementation of a Windows Event Collector\
 server running on GNU/Linux."""
-homepage = "https://github.com/cea-sec/openwec"
 depends = "$auto"
 section = "utility"
 priority = "optional"
