@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Make ContentFormat of subscriptions configurable (#1)
 - Add IgnoreChannelError option to subscriptions (#6)
 - Add Kerberos principals filter to subscriptions (#18)
+- Auto build Debian packages on new release (#27)
 
 ## [0.1.0] - 2023-05-30
 
